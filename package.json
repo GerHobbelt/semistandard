@@ -1,17 +1,17 @@
 {
-  "name": "standard",
-  "description": "JavaScript Standard Style",
-  "version": "2.4.1",
+  "name": "yodlr-standard",
+  "description": "JavaScript Standard Style for Yodlr",
+  "version": "1.0.0",
   "author": {
-    "name": "Feross Aboukhadijeh",
-    "email": "feross@feross.org",
-    "url": "http://feross.org/"
+    "name": "Ross Kukulinski",
+    "email": "ross@getyodlr.com",
+    "url": "https://getyodlr.com"
   },
   "bin": {
-    "standard": "./bin/cmd.js"
+    "yodlr-standard": "./bin/cmd.js"
   },
   "bugs": {
-    "url": "https://github.com/feross/standard/issues"
+    "url": "https://github.com/yodlr/yodlr-standard/issues"
   },
   "dependencies": {
     "eslint": "^0.13.0",
@@ -30,7 +30,7 @@
     "rimraf": "^2.2.8",
     "run-series": "^1.0.2"
   },
-  "homepage": "https://github.com/feross/standard",
+  "homepage": "https://github.com/yodlr/yodlr-standard",
   "keywords": [
     "style checker",
     "code style",
@@ -61,7 +61,7 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/feross/standard.git"
+    "url": "git://github.com/yodlr/yodlr-standard.git"
   },
   "scripts": {
     "test": "node ./bin/cmd.js && node ./test.js"

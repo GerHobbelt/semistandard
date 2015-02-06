@@ -1,23 +1,78 @@
 {
-  "disallowKeywordsOnNewLine": ["else"],
-  "disallowKeywords": ["with"],
-  "disallowMultipleVarDecl": "exceptUndefined",
-  "disallowNewlineBeforeBlockStatements": true,
-  "disallowOperatorBeforeLineBreak": ["."],
-  "disallowPaddingNewlinesInBlocks": true,
-  "disallowSpacesInCallExpression": true,
-  "disallowSpacesInsideParentheses": true,
-  "esnext": true,
-  "requireBlocksOnNewline": 1,
-  "requireOperatorBeforeLineBreak": ["=", "+", "-", "/", "*", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-  "requireSpacesInConditionalExpression": {
-      "afterTest": true,
-      "beforeConsequent": true,
-      "afterConsequent": true,
-      "beforeAlternate": true
+  "excludeFiles": [
+    "node_modules/**",
+    "site/static/vendors/**",
+    "lib/**",
+    "site/static/js/YodlrClient.js",
+    "test/**"
+  ],
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "try",
+    "catch"
+  ],
+  "requireOperatorBeforeLineBreak": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "maximumLineLength": {
+    "value": 80,
+    "allowComments": true,
+    "allowRegex": true
   },
-  "requireSpacesInForStatement": true,
   "validateIndentation": 2,
-  "validateLineBreaks": "LF",
-  "validateParameterSeparator": ", "
+  "validateQuoteMarks": "'",
+  "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+
+  "disallowMultipleLineStrings": true,
+  "disallowMixedSpacesAndTabs": true,
+  "disallowTrailingWhitespace": true,
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+  "disallowMultipleVarDecl": true,
+  "disallowAnonymousFunctions": true,
+
+  "requireSpaceAfterKeywords": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "return",
+    "try",
+    "catch"
+  ],
+  "requireSpaceBeforeBinaryOperators": [
+    "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+    "&=", "|=", "^=", "+=",
+
+    "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+    "|", "^", "&&", "||", "===", "==", ">=",
+    "<=", "<", ">", "!=", "!=="
+  ],
+  "requireSpaceAfterBinaryOperators": true,
+  "requireSpacesInConditionalExpression": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "requireSpacesInForStatement": true,
+  "requireLineFeedAtFileEnd": true,
+  "requireSpacesInFunctionExpression": {
+    "beforeOpeningCurlyBrace": true
+  },
+  "disallowSpacesInAnonymousFunctionExpression": {
+    "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInsideArrayBrackets": "all",
+  "disallowSpacesInsideParentheses": true,
+  "disallowOperatorBeforeLineBreak": ["."],
+
+
+  "validateJSDoc": {
+    "checkParamNames": true,
+    "requireParamTypes": true
+  },
+
+  "disallowMultipleLineBreaks": true,
+  "disallowNewlineBeforeBlockStatements": true
 }
