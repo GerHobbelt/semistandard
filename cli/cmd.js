@@ -87,8 +87,8 @@ function onResult (err, result) {
   if (result.errorCount === 0) process.exit(0)
 
   console.error(
-    'standard: Use JavaScript Standard Style ' +
-    '(https://github.com/feross/standard)'
+    'babel-standard: Use JavaScript Standard Style ' +
+    '(https://github.com/julien-f/babel-standard)'
   )
 
   result.results.forEach(function (result) {
@@ -109,7 +109,7 @@ function onError (err) {
   console.error(err.stack || err.message || err)
   console.error(
     '\nIf you think this is a bug in `standard`, open an issue: ' +
-    'https://github.com/feross/standard'
+    'https://github.com/julien-f/babel-standard'
   )
   process.exit(1)
 }
