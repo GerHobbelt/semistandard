@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "babel-eslint": "^3.1.1",
-    "babel-runtime": "^5",
     "dezalgo": "^1.0.1",
     "eslint": "^0.21.0",
     "eslint-config-standard": "^1.0.0",
