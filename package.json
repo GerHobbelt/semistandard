@@ -1,0 +1,42 @@
+{
+  "name": "babel-standard",
+  "version": "0.0.0",
+  "license": "ISC",
+  "description": "JavaScript Standard Style with Babel",
+  "keywords": [
+    "babel",
+    "code style",
+    "JavaScript Standard Style",
+    "standard style",
+    "standard"
+  ],
+  "homepage": "https://github.com/julien-f/babel-standard",
+  "bugs": "https://github.com/julien-f/babel-standard/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julien-f/babel-standard"
+  },
+  "author": {
+    "name": "Julien Fontanet",
+    "email": "julien.fontanet@isonoe.net"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "babel-standard": "./cli/cmd.js"
+  },
+  "dependencies": {
+    "babel-eslint": "^3.1.1",
+    "babel-runtime": "^5",
+    "dezalgo": "^1.0.1",
+    "eslint": "^0.21.0",
+    "eslint-config-standard": "^1.0.0",
+    "eslint-plugin-react": "^2.2.0",
+    "find-root": "^0.1.1",
+    "get-stdin": "^4.0.1",
+    "glob": "^5.0.6",
+    "minimist": "^1.1.1",
+    "run-parallel": "^1.1.1",
+    "uniq": "^1.0.1",
+    "xtend": "^4.0.0"
+  }
+}
