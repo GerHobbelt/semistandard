@@ -1,19 +1,19 @@
 {
-  "name": "standard",
-  "description": "JavaScript Standard Style",
-  "version": "3.8.0",
+  "name": "babel-standard",
+  "description": "JavaScript Standard Style with Babel",
+  "version": "0.1.1",
   "author": {
-    "name": "Feross Aboukhadijeh",
-    "email": "feross@feross.org",
-    "url": "http://feross.org/"
+    "name": "Julien Fontanet",
+    "email": "julien.fontanet@isonoe.net"
   },
   "bin": {
-    "standard": "./bin/cmd.js"
+    "babel-standard": "./bin/cmd.js"
   },
   "bugs": {
-    "url": "https://github.com/feross/standard/issues"
+    "url": "https://github.com/julien-f/babel-standard/issues"
   },
   "dependencies": {
+    "babel-eslint": "^3.1.1",
     "dezalgo": "^1.0.1",
     "eslint": "^0.21.0",
     "eslint-config-standard": "^1.0.0",
@@ -33,8 +33,9 @@
     "run-series": "^1.0.2",
     "tape": "^4.0.0"
   },
-  "homepage": "https://github.com/feross/standard",
+  "homepage": "https://github.com/julien-f/babel-standard",
   "keywords": [
+    "babel",
     "standard",
     "style checker",
     "code style",
@@ -64,7 +65,7 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/feross/standard.git"
+    "url": "git://github.com/julien-f/babel-standard.git"
   },
   "scripts": {
     "test": "node ./bin/cmd.js && tape test/*.js"
