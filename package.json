@@ -1,7 +1,7 @@
 {
   "name": "babel-standard",
   "description": "JavaScript Standard Style with Babel",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": {
     "name": "Julien Fontanet",
     "email": "julien.fontanet@isonoe.net"
