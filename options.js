@@ -7,10 +7,10 @@ module.exports = {
   version: pkg.version,
   homepage: pkg.homepage,
   bugs: pkg.bugs.url,
-  tagline: 'Semicolons For All!',
+  tagline: 'Semicolons and 4 Space Tabs For All!',
   eslintConfig: {
     configFile: path.join(__dirname, 'eslintrc.json')
   },
-  formatter: require('semistandard-format'),
-  formatterName: 'semistandard-format'
+  formatter: require('semi-4standard-format'),
+  formatterName: 'semi-4standard-format'
 }
