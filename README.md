@@ -33,7 +33,7 @@ let people know that your code is using the standard style.
 [![js-semi-4standard-style](https://cdn.rawgit.com/sterpe/semi-4standard/master/badge.svg)](https://github.com/sterpe/semi-4standard)
 ```
 
-[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
+[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi--4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
 
 ```markdown
 [![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi--4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
@@ -59,19 +59,10 @@ Error: Use JavaScript Semi-4-Standard Style
   lib/torrent.js:950:11: Expected '===' and instead saw '=='.
 ```
 
-### Editor plugins
-
-- **Sublime users**: Try [SublimeLinter-contrib-semi-4standard](https://github.com/Flet/SublimeLinter-contrib-semi-4standard) for linting in your editor!
-- **Atom users** - Install [linter-js-standard](https://atom.io/packages/linter-js-standard)
 
 **Formatting code to Semistandard**
 
 - **CLI** - [semi-4standard-format](https://github.com/ricardofbarros/semi-4standard-format)
-- **Atom plugin** - [standard-formatter](https://atom.io/packages/standard-formatter)
-- **Sublime Text plugin** - [StandardFormat](https://packagecontrol.io/packages/StandardFormat)
-- **VS Code plugin** - [JavaScript Semi-4-Standard Format](https://marketplace.visualstudio.com/items/homerjam.vscode-semi-4standard-format)
-
-Despite their names, all the above plugins support both `standard` and `semi-4standard`.
 
 ### What you might do if you're clever
 
