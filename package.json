@@ -1,7 +1,7 @@
 {
   "name": "semi-4standard",
   "description": "All the goodness of `feross/standard` with semicolons and 4 space tabs sprinkled on top.",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "author": {
     "email": "srterpe@gmail.com",
     "name": "Steve Terpe",
