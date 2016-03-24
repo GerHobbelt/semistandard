@@ -27,16 +27,16 @@ Importantly:
 Use this in one of your projects? Include one of these badges in your readme to
 let people know that your code is using the standard style.
 
-[![js-semi-4standard-style](https://cdn.rawgit.com/flet/semi-4standard/master/badge.svg)](https://github.com/Flet/semi-4standard)
+[![js-semi-4standard-style](https://cdn.rawgit.com/sterpe/semi-4standard/master/badge.svg)](https://github.com/sterpe/semi-4standard)
 
 ```markdown
-[![js-semi-4standard-style](https://cdn.rawgit.com/flet/semi-4standard/master/badge.svg)](https://github.com/Flet/semi-4standard)
+[![js-semi-4standard-style](https://cdn.rawgit.com/sterpe/semi-4standard/master/badge.svg)](https://github.com/sterpe/semi-4standard)
 ```
 
-[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semi-4standard)
+[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
 
 ```markdown
-[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semi-4standard)
+[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
 ```
 
 ## Usage
