@@ -36,7 +36,7 @@ let people know that your code is using the standard style.
 [![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
 
 ```markdown
-[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi-4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
+[![js-semi-4standard-style](https://img.shields.io/badge/code%20style-semi--4standard-brightgreen.svg?style=flat-square)](https://github.com/sterpe/semi-4standard)
 ```
 
 ## Usage
