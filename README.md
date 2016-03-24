@@ -2,7 +2,8 @@
 [![travis][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
 [![downloads][downloads-image]][downloads-url]
-[![bitHound Dependencies](https://www.bithound.io/github/gtanner/semi-4standard/badges/dependencies.svg)](https://www.bithound.io/github/gtanner/semi-4standard/master/dependencies/npm)
+[![bitHound Dependencies](https://www.bithound.io/github/sterpe/semi-4standard/badges/dependencies.svg)](https://www.bithound.io/github/sterpe/semi-4standard/master/dependencies/npm)
+
 
 ### One Semicolon and two (2) unnecessary spaces for the Dark Lord on his dark throne
 
@@ -149,8 +150,8 @@ $ semi-4standard --verbose | snazzy
 
 See [feross/standard] for more information.
 
-[travis-image]: https://img.shields.io/travis/Flet/semi-4standard.svg?style=flat-square
-[travis-url]: https://travis-ci.org/Flet/semi-4standard
+[travis-image]: https://img.shields.io/travis/sterpe/semi-4standard.svg?style=flat-square
+[travis-url]: https://travis-ci.org/sterpe/semi-4standard
 [npm-image]: https://img.shields.io/npm/v/semi-4standard.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/semi-4standard
 [downloads-image]: https://img.shields.io/npm/dm/semi-4standard.svg?style=flat-square
