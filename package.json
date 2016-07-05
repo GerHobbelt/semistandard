@@ -25,6 +25,9 @@
     "standard-engine": "^4.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^6.0.0",
+    "cross-spawn": "^3.0.1",
+    "minimist": "^1.2.0",
     "merge": "^1.2.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.3.4",
@@ -68,7 +71,12 @@
     "url": "https://github.com/Flet/semistandard.git"
   },
   "scripts": {
-    "test": "standard && tape test/*.js"
+    "update-authors": "./bin/update-authors.sh",
+    "test": "node ./bin/cmd.js --verbose && tape test/*.js",
+    "test-disabled": "npm test -- --disabled",
+    "test-offline": "npm test -- --offline",
+    "test-offline-quick": "npm test -- --offline --quick",
+    "test-quick": "npm test -- --quick"
   },
   "standard": {
     "ignore": "tmp/**"

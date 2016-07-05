@@ -8,10 +8,31 @@
 
 All the goodness of [feross/standard] with semicolons sprinkled on top.
 
+
+<h4 align="center">One Style to Rule Them All</h4>
+
+<p align="center">
+  <a href="https://travis-ci.org/feross/standard"><img src="https://travis-ci.org/feross/standard.svg?branch=master" alt="Travis"></a>
+  <a href="https://www.npmjs.com/package/standard"><img src="https://img.shields.io/npm/dm/standard.svg" alt="npm downloads"></a>
+  <a href="https://www.npmjs.com/package/standard"><img src="https://img.shields.io/npm/v/standard.svg" alt="npm version"></a>
+</p>
+<br>
+
+No decisions to make. No `.eslintrc`, `.jshintrc`, or `.jscsrc` files to manage. It just
+works.
+
+This module saves you (and others!) time in two ways:
+
+- **No configuration.** The easiest way to enforce consistent style in your project. Just
+  drop it in.
+- **Catch style errors before they're submitted in PRs.** Saves precious code review time
+  by eliminating back-and-forth between maintainer and contributor.
+
+
 ## Install
 
 ```bash
-npm install semistandard
+npm install GerHobbelt/semistandard
 ```
 
 ## Rules
@@ -19,7 +40,36 @@ npm install semistandard
 Importantly:
 
 - **semicolons**
-- Check [feross/standard] for the rest of the rules.
+- Check [feross/standard] for the rest of the rules:
+
+  - **2 spaces** – for indentation
+  - **Single quotes for strings** – except to avoid escaping
+  - **No unused variables** – this one catches *tons* of bugs!
+  - **No semicolons** – [It's][1] [fine.][2] [Really!][3]
+  - **Never start a line with `(` or `[`**
+    - This is the **only** gotcha with omitting semicolons – *automatically checked for you!*
+    - [More details][4]
+  - **Space after keywords** `if (condition) { ... }`
+  - **Space after function name** `function name (arg) { ... }`
+  - Always use `===` instead of `==` – but `obj == null` is allowed to check `null || undefined`.
+  - Always handle the node.js `err` function parameter
+  - Always prefix browser globals with `window` – except `document` and `navigator` are okay
+    - Prevents accidental use of poorly-named browser globals like `open`, `length`,
+      `event`, and `name`.
+  - **And [more goodness][5]** – *give `standard` a try today!*
+
+[1]: http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
+[2]: http://inimino.org/~inimino/blog/javascript_semicolons
+[3]: https://www.youtube.com/watch?v=gsfbh17Ax9I
+[4]: RULES.md#semicolons
+[5]: RULES.md#javascript-standard-style
+
+To get a better idea, take a look at
+[a sample file](https://github.com/feross/bittorrent-dht/blob/master/client.js) written
+in JavaScript Standard Style, or check out some of
+[the repositories](https://github.com/feross/standard-packages/blob/master/all.json) that use
+`standard`.
+
 
 ## Badge
 
@@ -52,13 +102,24 @@ npm install semistandard -g
 After you've done that you should be able to use the `semistandard` program. The simplest use
 case would be checking the style of all JavaScript files in the current working directory:
 
-```
+```bash
 $ semistandard
 Error: Use JavaScript Semi-Standard Style
   lib/torrent.js:950:11: Expected '===' and instead saw '=='.
 ```
 
-### Editor plugins
+You can optionally pass in a directory (or directories) using the glob pattern. Be sure to quote paths containing glob patterns so that they are expanded by semistandard instead of your shell:
+
+```bash
+$ semistandard "src/util/**/*.js" "test/**/*.js"
+```
+
+**Note:** by default `semistandard` will look for all files matching the patterns: `**/*.js`, `**/*.jsx`.
+
+
+### Text editor plugins
+
+First, install `semistandard`. Then, install the appropriate plugin for your editor:
 
 - **Sublime users**: Try [SublimeLinter-contrib-semistandard](https://github.com/Flet/SublimeLinter-contrib-semistandard) for linting in your editor!
 - **Atom users** - Install [linter-js-standard](https://atom.io/packages/linter-js-standard)

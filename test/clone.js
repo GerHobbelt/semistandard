@@ -8,70 +8,138 @@
  * VERSION BUMP.)
  */
 
-var cp = require('child_process')
-var extend = require('xtend')
+var crossSpawn = require('cross-spawn')
+var fs = require('fs')
+var minimist = require('minimist')
 var mkdirp = require('mkdirp')
+var os = require('os')
+var parallelLimit = require('run-parallel-limit')
 var path = require('path')
-var rimraf = require('rimraf')
-var series = require('run-series')
+var standardPackages = require('standard-packages')
 var test = require('tape')
 
+var GIT = 'git'
+var STANDARD = path.join(__dirname, '..', 'bin', 'cmd.js')
 var TMP = path.join(__dirname, '..', 'tmp')
-var SEMISTANDARD = path.join(__dirname, '..', 'bin', 'cmd.js')
+var PARALLEL_LIMIT = os.cpus().length
 
-// var URLs = require('./semistandard-repos.json')
-var URLS = [
-  'https://github.com/Flet/acetate',
-  'https://github.com/Flet/cursorfun',
-  'https://github.com/Flet/scenevr'
-]
-
-var MODULES = {}
-URLS.forEach(function (url) {
-  var spliturl = url.split('/')
-  var name = spliturl[spliturl.length - 1]
-  MODULES[name] = url + '.git'
+var argv = minimist(process.argv.slice(2), {
+  boolean: [
+    'disabled',
+    'offline',
+    'quick',
+    'quiet'
+  ]
 })
 
-test('clone repos from github', function (t) {
-  rimraf.sync(TMP)
-  mkdirp.sync(TMP)
+var testPackages = argv.quick
+  ? standardPackages.test.slice(0, 20)
+  : standardPackages.test
 
-  series(Object.keys(MODULES).map(function (name) {
-    var url = MODULES[name]
-    return function (cb) {
-      var args = [ 'clone', '--depth', 1, url, path.join(TMP, name) ]
-      // TODO: Start `git` in a way that works on Windows – PR welcome!
-      spawn('git', args, {}, cb)
-    }
-  }), function (err) {
-    if (err) throw err
-    t.pass('cloned repos')
-    t.end()
-  })
+var disabledPackages = []
+testPackages = testPackages.filter(function (pkg) {
+  if (pkg.disable) disabledPackages.push(pkg)
+  return !pkg.disable
 })
 
-test('lint repos', function (t) {
-  series(Object.keys(MODULES).map(function (name) {
-    return function (cb) {
-      var cwd = path.join(TMP, name)
-      spawn(SEMISTANDARD, [], { cwd: cwd }, function (err) {
-        t.error(err, name)
-        cb(null)
+if (argv.disabled) {
+  testPackages = disabledPackages
+} else {
+  test('Disabled Packages', function (t) {
+    if (disabledPackages.length === 0) {
+      t.pass('no disabled packages')
+      t.end()
+    } else {
+      t.plan(disabledPackages.length)
+      disabledPackages.forEach(function (pkg) {
+        t.pass('DISABLED: ' + pkg.name + ': ' + pkg.disable + ' (' + pkg.repo + ')')
       })
     }
-  }), function (err) {
+  })
+}
+
+test('test github repos that use `standard`', function (t) {
+  t.plan(testPackages.length)
+
+  mkdirp.sync(TMP)
+
+  parallelLimit(testPackages.map(function (pkg) {
+    var name = pkg.name
+    var url = pkg.repo + '.git'
+    var folder = path.join(TMP, name)
+    return function (cb) {
+      access(path.join(TMP, name), fs.R_OK | fs.W_OK, function (err) {
+        if (argv.offline) {
+          if (err) {
+            t.pass('SKIPPING (offline): ' + name + ' (' + pkg.repo + ')')
+            return cb(null)
+          }
+          runStandard(cb)
+        } else {
+          downloadPackage(function (err) {
+            if (err) return cb(err)
+            runStandard(cb)
+          })
+        }
+
+        function downloadPackage (cb) {
+          if (err) gitClone(cb)
+          else gitPull(cb)
+        }
+
+        function gitClone (cb) {
+          var args = [ 'clone', '--depth', 1, url, path.join(TMP, name) ]
+          spawn(GIT, args, { stdio: 'ignore' }, function (err) {
+            if (err) err.message += ' (' + name + ')'
+            cb(err)
+          })
+        }
+
+        function gitPull (cb) {
+          var args = [ 'pull' ]
+          spawn(GIT, args, { cwd: folder, stdio: 'ignore' }, function (err) {
+            if (err) err.message += ' (' + name + ')'
+            cb(err)
+          })
+        }
+
+        function runStandard (cb) {
+          var args = [ '--verbose' ]
+          if (pkg.args) args.push.apply(args, pkg.args)
+          spawn(STANDARD, args, { cwd: folder }, function (err) {
+            var str = name + ' (' + pkg.repo + ')'
+            if (err) { t.fail(str) } else { t.pass(str) }
+            cb(null)
+          })
+        }
+      })
+    }
+  }), PARALLEL_LIMIT, function (err) {
     if (err) throw err
-    t.end()
   })
 })
 
 function spawn (command, args, opts, cb) {
-  var child = cp.spawn(command, args, extend({ stdio: 'inherit' }, opts))
+  if (!opts.stdio) opts.stdio = argv.quiet ? 'ignore' : 'inherit'
+
+  var child = crossSpawn(command, args, opts)
   child.on('error', cb)
   child.on('close', function (code) {
-    if (code !== 0) cb(new Error('non-zero exit code: ' + code))
-    else cb(null)
+    if (code !== 0) return cb(new Error('non-zero exit code: ' + code))
+    cb(null)
   })
   return child
+}
+
+function access (path, mode, callback) {
+  if (typeof mode === 'function') {
+    return access(path, null, callback)
+  }
+
+  // Node v0.10 lacks `fs.access`, which is faster, so fallback to `fs.stat`
+  if (typeof fs.access === 'function') {
+    fs.access(path, mode, callback)
+  } else {
+    fs.stat(path, callback)
+  }
 }
